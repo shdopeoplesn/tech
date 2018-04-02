@@ -13,7 +13,7 @@
 <!-- FOOTER SECTION END-->
 <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 <!-- CORE JQUERY SCRIPTS -->
-<script src="assets/js/jquery-1.11.1.js"></script>
-<script src="assets/js/application.js"></script>
+<script src="{{ URL::asset('assets/js/jquery-1.11.1.js') }}"></script>
+<script src="{{ URL::asset('assets/js/application.js') }}"></script>
 <!-- BOOTSTRAP SCRIPTS  -->
-<script src="assets/js/bootstrap.js"></script>
+<script src="{{ URL::asset('assets/js/bootstrap.js')}}"></script>

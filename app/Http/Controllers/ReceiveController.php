@@ -20,4 +20,20 @@ class ReceiveController extends BaseController
                                               ->where('student_gived',0)->paginate(12);
         return view('receive_check',['applications' => $applications,'this_script'=>'receive_check']);
     }
+    protected function receive_doublecheck($data) {
+        $applications = DB::table('event_list')->where('id',$data)->get();
+        //DB::select('select * from users where id = '.$data);
+        return view('receive_doublecheck',['applications' => $applications,'this_script'=>'receive_doublecheck']);
+    }
+    protected function submit(Request $data) {
+        $data = Request::all();
+        $giveman =  $data['giveman'];
+        $id = $data['id'];
+        DB::table('event_list') ->where('id', $id)->update([
+            'giveman' => $giveman,
+            'student_gived' => 1
+            ]);
+        return redirect('/receive_check');//返回住宿生領取確認清單
+    }
+     
 }

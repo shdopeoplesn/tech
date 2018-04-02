@@ -42,14 +42,14 @@
                                         <td>{{ $application->post_time }}</td>
                                         <td>{{ $application->processer }}</td>
                                         <td>{{ $application->process_time }}</td>
-                                        <td><a class="btn btn-success" href="#">發放</a></td>
+                                        <td><a class="btn btn-success" href="/receive_doublecheck/{{ $application->id }}">確定發放</a></td>
                                     </tr>
                                     @endforeach
                                     <!--不到12欄就補到12欄 -->
                                     @for ($i = count($applications); $i < 12; $i++)
                                         <tr>
                                            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                                       </tr>
+                                        </tr>
                                     @endfor
                                     @endif
                                     <!-- 沒抓到值就給空表格 -->

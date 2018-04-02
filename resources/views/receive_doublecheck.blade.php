@@ -16,55 +16,36 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                尚未領取名單
+                                房卡/學生證發放
                             </div>
-                            <table id="dataTable" class="table table-striped table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>房號</th>
-                                        <th>問題類別</th>
-                                        <th>申請時間</th>
-                                        <th>處理人</th>
-                                        <th>處理時間</th>
-                                        <th>動作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if(isset($applications))
-                                    @foreach($applications as $application)
-                                    <tr>
-                                        <td>{{ $application->room }}</td>
-                                        @if(mb_strlen($application->content,'UTF-8')>10)
-                                        <td>{{ mb_substr($application->content,0,10,"UTF-8") }}...</td>
-                                        @else
-                                        <td>{{ $application->content }}</td>
-                                        @endif
-                                        <td>{{ $application->post_time }}</td>
-                                        <td>{{ $application->processer }}</td>
-                                        <td>{{ $application->process_time }}</td>
-                                        <td><a class="btn btn-success" href="#">發放</a></td>
-                                    </tr>
-                                    @endforeach
-                                    <!--不到12欄就補到12欄 -->
-                                    @for ($i = count($applications); $i < 12; $i++)
-                                        <tr>
-                                           <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                                       </tr>
-                                    @endfor
-                                    @endif
-                                    <!-- 沒抓到值就給空表格 -->
-                                    @if(!isset($applications))
-                                        @for ($i = 0; $i < 12; $i++)
-                                            <tr>
-                                               <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                                           </tr>
-                                        @endfor
-                                    @endif
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="text-center">
-                            {{ $applications->links() }}
+                            @if(isset($applications))
+                            @foreach($applications as $application)
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4">
+                                    {{ Form::open(["id"=>"form1", "url"=>"/receive_submit", "method"=>"post"]) }}
+                                    <div class="form-group">
+                                        <label for="applicant">房號</label>
+                                        <input type="text" value="{{$application->room}}" class="form-control" readonly/>
+                                        <label for="applicant">問題類別</label>
+                                        <input type="text" value="{{$application->content}}" class="form-control" readonly/>
+                                        <label for="applicant">申請時間</label>
+                                        <input type="text" value="{{$application->post_time}}" class="form-control" readonly/>
+                                        <label for="applicant">處理人</label>
+                                        <input type="text" value="{{$application->processer}}" class="form-control" readonly/>
+                                        <label for="applicant">處理時間</label>
+                                        <input type="text" value="{{$application->process_time}}" class="form-control" readonly/>
+                                        <label for="applicant">發放人</label>
+                                        <input type="text" class="form-control" name="giveman" id="giveman" placeholder="填寫你的名字 e.g. 楊所長" required="required" maxlength="50" />
+                                        <input type="hidden" value="{{$application->id}}" class="form-control" id="id" name="id" readonly/>
+                                    </div>
+                                    <div class="form-group" align="center">
+                                        <button type="submit" class="btn btn-primary">確認發放</button>
+                                    </div>
+                                    {{Form::close()}}
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
                         </div>
                     </div> 
                 </div>

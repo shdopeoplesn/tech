@@ -7,11 +7,11 @@
     <![endif]-->
 <title>資訊組線上處理系統</title>
 <!-- BOOTSTRAP CORE STYLE  -->
-<link href="assets/css/bootstrap.css" rel="stylesheet" />
+<link href="{{ URL::asset('assets/css/bootstrap.css') }}" rel="stylesheet" />
 <!-- FONT AWESOME ICONS  -->
-<link href="assets/css/font-awesome.css" rel="stylesheet" />
+<link href="{{ URL::asset('assets/css/font-awesome.css') }}" rel="stylesheet" />
 <!-- CUSTOM STYLE  -->
-<link href="assets/css/style.css" rel="stylesheet" />
+<link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet" />
 <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
