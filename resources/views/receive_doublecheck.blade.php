@@ -35,7 +35,7 @@
                                         <label for="applicant">處理時間</label>
                                         <input type="text" value="{{$application->process_time}}" class="form-control" readonly/>
                                         <label for="applicant">發放人</label>
-                                        <input type="text" class="form-control" name="giveman" id="giveman" placeholder="填寫你的名字 e.g. 楊所長" required="required" maxlength="50" />
+                                        <input type="text" class="form-control" value="{{ $name }}" name="giveman" id="giveman" readonly placeholder="填寫你的名字 e.g. 楊所長" required="required" maxlength="50" />
                                         <input type="hidden" value="{{$application->id}}" class="form-control" id="id" name="id" readonly/>
                                     </div>
                                     <div class="form-group" align="center">

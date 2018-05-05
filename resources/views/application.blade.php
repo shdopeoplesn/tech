@@ -34,7 +34,7 @@
                                 {{ Form::open(["id"=>"form1", "url"=>"/application_submit", "method"=>"post"]) }}
                                 <div class="form-group">
                                     <label for="applicant">交代人</label>
-                                    <input type="text" class="form-control" name="applicant" id="applicant" placeholder="填寫你的名字 e.g. 楊銓興a.k.a.煞氣銓哥" required="required" maxlength="50" />
+                                    <input type="text" value="{{ $name }}" readonly class="form-control" name="applicant" id="applicant" placeholder="填寫你的名字 e.g. 楊銓興a.k.a.煞氣銓哥" required="required" maxlength="50" />
                                 </div>
                                 <div class="form-group">
                                     <label for="date">房號/床號</label>

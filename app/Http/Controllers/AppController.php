@@ -14,7 +14,18 @@ use Cookie;
 class AppController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    protected function chk_login() {
+        if (Session::has('account') && Session::has('chk_sum')) {
+            if (Session::get('chk_sum') == 'tachibana_kanade') {
+                return true;
+            }
+        }
+        return false;
+    }
     protected function submit(Request $data) {
+        if($this->chk_login() == false){
+            return redirect('/login_from_this_page');//返回登入頁
+        }
         $data = Request::all();
         //print_r($data);
         /*
@@ -71,7 +82,10 @@ class AppController extends BaseController
     }
     
     protected function applicate() {
+        if($this->chk_login() == false){
+            return redirect('/login_from_this_page');//返回登入頁
+        }
         $applications = DB::table('event_list')->where('process_flag',0)->paginate(12);
-        return view('application',['applications' => $applications,'this_script' => 'application']);
+        return view('application',['applications' => $applications,'this_script' => 'application','name' => Session::get('name')]);
     }
 }
